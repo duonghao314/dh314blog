@@ -1,0 +1,288 @@
+{% extends 'BaseTemp/homeTemp.html' %}
+{% load static %}
+
+{% block categories %}
+    {% for cat in cats %}
+        <li class="nav-item ">
+            <a class="nav-link waves-effect" style="font-weight: bold"
+               href="/cat/{{ cat.catKeyWord }}">{{ cat.catName }}
+                <span class="sr-only"></span>
+            </a>
+        </li>
+    {% endfor %}
+{% endblock %}
+
+{% block articles %}
+    {% for art in arts %}
+
+
+        {% if forloop.counter == 1 or forloop.counter == 4 %}
+            <div class="row mb-4 wow fadeIn">
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-4">
+
+                    <!--Card-->
+                    <div class="card">
+
+                        <!--Card image-->
+                        <div class="view overlay">
+
+                            <img src="{{ art.artImg.url }}"
+                                 class="card-img-top"
+                                 alt="">
+                            <a href="/art/{{ art.artUrl }}/{{ art.id }}"
+                               target="_blank">
+
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+                            <!--Title-->
+                            <h4 class="card-title">{{ art.artName }}</h4>
+                            <!--Text-->
+                            <p class="card-text">{{ art.artDate }}&nbsp;- &nbsp; Lượt xem:&nbsp;{{ art.artViews }}</p>
+                            <p class="card-text">
+                                <strong>{{ art.artContent }}</strong>
+                            </p>
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+
+                </div>
+                {% else %}
+                {% if forloop.counter == 2 or forloop.counter == 5 %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+
+                        <!--Card-->
+                        <div class="card">
+
+                            <!--Card image-->
+                            <div class="view overlay">
+                                <img src="{{ art.artImg.url }}"
+                                     class="card-img-top"
+                                     alt="">
+                                <a href="/art/{{ art.artUrl }}/{{ art.id }}"
+                                   target="_blank">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+
+                            <!--Card content-->
+                            <div class="card-body">
+                                <!--Title-->
+                                <h4 class="card-title">{{ art.artName }}</h4>
+                                <!--Text-->
+                                <p class="card-text">{{ art.artDate }}&nbsp;- &nbsp; Lượt
+                                    xem:&nbsp;{{ art.artViews }}</p>
+                                <p class="card-text">
+                                    <strong>{{ art.artContent }}</strong>
+                                </p>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+
+                    </div>
+
+                {% else %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+
+                        <!--Card-->
+                        <div class="card">
+
+                            <!--Card image-->
+                            <div class="view overlay">
+                                <img src="{{ art.artImg.url }}"
+                                     class="card-img-top" alt="">
+                                <a href="/art/{{ art.artUrl }}/{{ art.id }}"
+                                   target="_blank">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+
+                            <!--Card content-->
+                            <div class="card-body">
+                                <!--Title-->
+                                <h4 class="card-title">{{ art.artName }}</h4>
+                                <!--Text-->
+                                <p class="card-text">{{ art.artDate }}&nbsp;- &nbsp; Lượt
+                                    xem:&nbsp;{{ art.artViews }}</p>
+                                <p class="card-text">
+                                    <strong>{{ art.artContent }}</strong>
+                                </p>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+
+                    </div>
+                    <!--Grid column-->
+
+                    </div>
+                {% endif %}
+        {% endif %}
+        <!--Grid column-->
+
+
+
+    {% endfor %}
+{% endblock %}
+{% block headArt %}
+    <section class="mt-4">
+
+        <!--Grid row-->
+        <div class="row">
+
+            <!--Grid column-->
+            <div class="col-md-9 mb-4">
+
+                <!--Featured Image-->
+                <div class="card mb-4 wow fadeIn">
+
+                    <img src="{{ art.artImg.url }}" class="img-fluid" alt="">
+
+                </div>
+                <!--/.Featured Image-->
+
+                <!--Card-->
+                <div class="card mb-4 wow fadeIn">
+                    <div class="card-body">
+                        <h3>{{ art.artName }}</h3>
+                        <p class="h4 my-4">
+                        <p>{{ art.artDate }} &nbsp;&nbsp;- &nbsp;&nbsp;Lượt xem: &nbsp;{{ art.artViews }}</p>
+                        <!--Card content-->
+                        {% autoescape on %}
+                            {{ art.artContent|safe }}
+                        {% endautoescape %}
+                        </p>
+                    </div>
+                </div>
+                <!--/.Card-->
+
+                <!--Card-->
+
+                <!--/.Card-->
+
+                <!--Card-->
+                <div class="card mb-4 wow fadeIn">
+
+                    <div class="card-header font-weight-bold">
+                        <span>About author</span>
+                        <span class="pull-right">
+                  <a href="">
+                    <i class="fab fa-facebook-f mr-2"></i>
+                  </a>
+                  <a href="">
+                    <i class="fab fa-twitter mr-2"></i>
+                  </a>
+                  <a href="">
+                    <i class="fab fa-instagram mr-2"></i>
+                  </a>
+                  <a href="">
+                    <i class="fab fa-linkedin-in mr-2"></i>
+                  </a>
+                </span>
+                    </div>
+
+                    <!--Card content-->
+                    <div class="card-body">
+
+                        <div class="media d-block d-md-flex mt-3">
+                            <img class="d-flex mb-3 mx-auto z-depth-1" src="{{ MEDIA_URL }}/media/media/shitface.png"
+                                 alt="Generic placeholder image" style="width: 100px;">
+                            <div class="media-body text-center text-md-left ml-md-3 ml-0">
+                                <h5 class="mt-0 font-weight-bold">Đường Hạo
+                                </h5>
+                                It's me
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <!--/.Card-->
+
+                <!--Comments-->
+
+                <!--/.Comments-->
+
+                <!--Reply-->
+                <div class="card mb-3 wow fadeIn">
+                    <div class="card-header font-weight-bold">Leave a reply</div>
+                    <div class="card-body">
+
+                        <!-- Default form reply -->
+                        <form class="form" method="post" action="/upload-comment" id = "upload-form">
+
+                            <!-- Comment -->
+                            <div class="form-group">
+                                <label for="replyFormComment">Your comment</label>
+                                <textarea name = "replyFormComment" class="form-control" id="replyFormComment" rows="5"></textarea>
+                            </div>
+
+                            <!-- Name -->
+                            <label for="replyFormName">Your name</label>
+                            <input name = "replyFormName" type="text" id="replyFormName" class="form-control">
+
+                            <br>
+
+                            <!-- Email -->
+                            <label for="replyFormEmail">Your e-mail</label>
+                            <input name="replyFormEmail" type="email" id="replyFormEmail" class="form-control">
+
+
+                            <div class="text-center mt-4">
+                                <button class="btn btn-info btn-md" onclick="onSend()">Post</button>
+                            </div>
+                        </form>
+                        <!-- Default form reply -->
+
+
+                    </div>
+                </div>
+                <!--/.Reply-->
+
+            </div>
+            <!--Grid column-->
+
+            <!--Grid column-->
+            <div class="col-md-3 mb-4">
+
+                <!--Card: Jumbotron-->
+
+                <!--Card: Jumbotron-->
+
+                <!--Card : Dynamic content wrapper-->
+                <div class="card mb-4 text-center wow fadeIn">
+
+                    <div class="card-header">Top Categories</div>
+
+                    <!--Card content-->
+                    <div class="card-body">
+
+                        <!-- Default form login -->
+                        {% for catRanked in catsRanked %}
+
+
+                            <p style="text-align:left;font-weight: bold;color: #0e4377;font-size: 16px">
+                                {{ forloop.counter }}.&nbsp;&nbsp;<a
+                                    href="/cat/{{ catRanked.catKeyWord }}">{{ catRanked.catName }}</a>
+                                <span style="text-align:right;float:right;">{{ catRanked.catViews }} &nbsp;Lượt xem</span>
+                            </p>
+                        {% endfor %}
+
+
+                        <!-- Default form login -->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            function onSend() {
+                $('#upload-form').submit()
+            }
+        </script>
+{% endblock %}

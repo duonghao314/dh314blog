@@ -1,0 +1,180 @@
+{% extends 'BaseTemp/homeTemp.html' %}
+{% load static %}
+
+{% block categories %}
+    {% for cat in cats %}
+        <li class="nav-item ">
+            <a class="nav-link waves-effect" style="font-weight: bold"
+               href="/cat/{{ cat.catKeyWord }}">{{ cat.catName }}
+                <span class="sr-only"></span>
+            </a>
+        </li>
+    {% endfor %}
+{% endblock %}
+
+{% block articles %}
+    {% for art in arts %}
+
+
+        {% if forloop.counter == 1 or forloop.counter == 4 %}
+            <div class="row mb-4 wow fadeIn">
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-4">
+
+                    <!--Card-->
+                    <div class="card">
+
+                        <!--Card image-->
+                        <div class="view overlay">
+
+                            <img src="{{ art.artImg.url }}"
+                                 class="card-img-top"
+                                 alt="">
+                            <a href="/art/{{ art.artUrl }}/{{ art.id }}"
+                               target="_blank">
+
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+                            <!--Title-->
+                            <h4 class="card-title">{{ art.artName }}</h4>
+                            <!--Text-->
+                            <p class="card-text">{{ art.artDate }}&nbsp;- &nbsp; Lượt xem:&nbsp;{{ art.artViews }}</p>
+                            <p class="card-text">
+                                <strong>{{ art.artContent|safe }}</strong>
+                            </p>
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+
+                </div>
+                {% else %}
+                {% if forloop.counter == 2 or forloop.counter == 5 %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+
+                        <!--Card-->
+                        <div class="card">
+
+                            <!--Card image-->
+                            <div class="view overlay">
+                                <img src="{{ art.artImg.url }}"
+                                     class="card-img-top"
+                                     alt="">
+                                <a href="/art/{{ art.artUrl }}/{{ art.id }}"
+                                   target="_blank">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+
+                            <!--Card content-->
+                            <div class="card-body">
+                                <!--Title-->
+                                <h4 class="card-title">{{ art.artName }}</h4>
+                                <!--Text-->
+                                <p class="card-text">{{ art.artDate }}&nbsp;- &nbsp; Lượt
+                                    xem:&nbsp;{{ art.artViews }}</p>
+                                <p class="card-text">
+                                    <strong>{{ art.artContent|safe }}</strong>
+                                </p>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+
+                    </div>
+
+                {% else %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+
+                        <!--Card-->
+                        <div class="card">
+
+                            <!--Card image-->
+                            <div class="view overlay">
+                                <img src="{{ art.artImg.url }}"
+                                     class="card-img-top" alt="">
+                                <a href="/art/{{ art.artUrl }}/{{ art.id }}"
+                                   target="_blank">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+
+                            <!--Card content-->
+                            <div class="card-body">
+                                <!--Title-->
+                                <h4 class="card-title">{{ art.artName }}</h4>
+                                <!--Text-->
+                                <p class="card-text">{{ art.artDate }}&nbsp;- &nbsp; Lượt
+                                    xem:&nbsp;{{ art.artViews }}</p>
+                                <p class="card-text">
+                                    <strong>{{ art.artContent|safe }}</strong>
+                                </p>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+
+                    </div>
+                    <!--Grid column-->
+
+                    </div>
+                {% endif %}
+        {% endif %}
+        <!--Grid column-->
+
+
+
+    {% endfor %}
+{% endblock %}
+{% block headArt %}
+    <section class="card wow fadeIn"
+             style="background-image: url({{ headArt.artImg.url }});max-height: 400px; background-size:cover ">
+
+        <!-- Content -->
+        <div class="card-body text-white text-center py-5 px-5 my-5">
+
+            <h1 class="mb-4">
+                <strong style="background-color: #3b3b3b">{{ headArt.artName }}</strong>
+            </h1>
+            <p>
+                <strong style="background-color: #3b3b3b">{{ headArt.artDate }}&nbsp;- &nbsp; Lượt
+                    xem:&nbsp;{{ headArt.artViews }}</strong>
+            </p>
+            <p class="mb-4">
+                <strong style="background-color: #3b3b3b">{{ headArt.artContent|safe }}</strong>
+            </p>
+            <a target="_blank" href="/art/{{ headArt.artUrl }}/{{ headArt.id }}"
+               class="btn btn-outline-white btn-lg">Xem ngay
+                <i class="fas fa-angle-double-right ml-2"></i>
+            </a>
+
+        </div>
+        <!-- Content -->
+    </section>
+{% endblock %}
+{% block pagination %}
+    {% for i in countPage %}
+        {% if currentPage == forloop.counter %}
+            <li class="page-item active">
+                <a class="page-link" href="?page={{ i }}">{{ i }}
+                    <span class="sr-only">(current)</span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item">
+                <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+            </li>
+        {% endif %}
+    {% endfor %}
+{% endblock %}
+{% block last %}
+    <li class="page-item">
+                        <a class="page-link" href="?page={{ maxPage }}" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'BaseTemp/homeTemp.html' %}
+{% load static %}
+
+{% block categories %}
+    {% for cat in cats %}
+        <li class="nav-item ">
+            <a class="nav-link waves-effect" style="font-weight: bold" href="/cat/{{ cat.catKeyWord }}">{{ cat.catName }}
+                <span class="sr-only"></span>
+            </a>
+        </li>
+    {% endfor %}
+{% endblock %}
+
+{% block headArt %}
+    <img src="{% static '/'%}{{ img }}" style="width: 100%;height: 500px">
+{% endblock %}

@@ -1,0 +1,136 @@
+{% extends 'BaseTemp/homeTemp.html' %}
+{% load static %}
+
+{% block categories %}
+    {% for cat in cats %}
+        <li class="nav-item ">
+            <a class="nav-link waves-effect" style="font-weight: bold" href="/cat/{{ cat.catKeyWord }}">{{ cat.catName }}
+                <span class="sr-only"></span>
+            </a>
+        </li>
+    {% endfor %}
+{% endblock %}
+
+{% block articles %}
+    {% for art in arts %}
+
+
+        {% if forloop.counter == 1 or forloop.counter == 4 %}
+            <div class="row mb-4 wow fadeIn">
+
+                <!--Grid column-->
+                <div class="col-lg-4 col-md-12 mb-4">
+
+                    <!--Card-->
+                    <div class="card">
+
+                        <!--Card image-->
+                        <div class="view overlay">
+
+                            <img src="{{ art.artImg.url }}"
+                                 class="card-img-top"
+                                 alt="">
+                            <a href="/art/{{ art.artUrl }}/{{ art.id }}"
+                               target="_blank">
+
+                        </div>
+
+                        <!--Card content-->
+                        <div class="card-body">
+                            <!--Title-->
+                            <h4 class="card-title">{{ art.artName }}</h4>
+                            <!--Text-->
+                            <p class="card-text">{{ art.artDate }}&nbsp;- &nbsp; Lượt xem:&nbsp;{{ art.artViews }}</p>
+                            <p class="card-text">
+                                <strong>{{ art.artContent }}</strong>
+                            </p>
+                        </div>
+
+                    </div>
+                    <!--/.Card-->
+
+                </div>
+                {% else %}
+                {% if forloop.counter == 2 or forloop.counter == 5 %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+
+                        <!--Card-->
+                        <div class="card">
+
+                            <!--Card image-->
+                            <div class="view overlay">
+                                <img src="{{ art.artImg.url }}"
+                                     class="card-img-top"
+                                     alt="">
+                                <a href="/art/{{ art.artUrl }}/{{ art.id }}"
+                                   target="_blank">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+
+                            <!--Card content-->
+                            <div class="card-body">
+                                <!--Title-->
+                                <h4 class="card-title">{{ art.artName }}</h4>
+                                <!--Text-->
+                                <p class="card-text">{{ art.artDate }}&nbsp;- &nbsp; Lượt
+                                    xem:&nbsp;{{ art.artViews }}</p>
+                                <p class="card-text">
+                                    <strong>{{ art.artContent }}</strong>
+                                </p>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+
+                    </div>
+
+                {% else %}
+                    <div class="col-lg-4 col-md-6 mb-4">
+
+                        <!--Card-->
+                        <div class="card">
+
+                            <!--Card image-->
+                            <div class="view overlay">
+                                <img src="{{ art.artImg.url }}"
+                                     class="card-img-top" alt="">
+                                <a href="/art/{{ art.artUrl }}/{{ art.id }}"
+                                   target="_blank">
+                                    <div class="mask rgba-white-slight"></div>
+                                </a>
+                            </div>
+
+                            <!--Card content-->
+                            <div class="card-body">
+                                <!--Title-->
+                                <h4 class="card-title">{{ art.artName }}</h4>
+                                <!--Text-->
+                                <p class="card-text">{{ art.artDate }}&nbsp;- &nbsp; Lượt
+                                    xem:&nbsp;{{ art.artViews }}</p>
+                                <p class="card-text">
+                                    <strong>{{ art.artContent }}</strong>
+                                </p>
+                            </div>
+
+                        </div>
+                        <!--/.Card-->
+
+                    </div>
+                    <!--Grid column-->
+
+                    </div>
+                {% endif %}
+        {% endif %}
+        <!--Grid column-->
+
+
+
+    {% endfor %}
+{% endblock %}
+{% block headArt %}
+    <h1 class="logo" style="text-align: center">
+        <span class="word2">{{ currentCat }}</span>
+        <span class="word1">{{ currentCat }}</span>
+    </h1>
+{% endblock %}
